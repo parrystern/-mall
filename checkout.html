@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout – City Center Mall</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Checkout</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="cart.html">Cart</a>
+    </nav>
+  </header>
+
+  <main>
+    <h3>Total: $<span id="checkoutTotal">0.00</span></h3>
+    <button onclick="payNow()">Proceed to Payment</button>
+    <p id="thanks" style="margin-top: 20px;"></p>
+  </main>
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let total = cart.reduce((sum, item) => sum + parseFloat(item.price), 0);
+    document.getElementById("checkoutTotal").textContent = total.toFixed(2);
+
+    function payNow() {
+      localStorage.removeItem("cart");
+      document.getElementById("thanks").innerText = "Thank you for your order!";
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Cart – City Center Mall</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Extra cart-specific polish */
+    .cart-container {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      max-width: 900px;
+      margin: 2rem auto;
+    }
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .cart-item img {
+      width: 80px;
+      height: 80px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .cart-item h4 {
+      flex: 1;
+      margin-left: 1rem;
+      font-size: 1.1rem;
+      color: #333;
+    }
+
+    .cart-item button {
+      background: #e74c3c;
+      color: white;
+      border: none;
+      padding: 6px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .cart-item button:hover {
+      background: #c0392b;
+    }
+
+    .qty-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .qty-controls button {
+      background: #333;
+      color: white;
+      border: none;
+      width: 25px;
+      height: 25px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .qty-controls span {
+      font-size: 1rem;
+      min-width: 20px;
+      text-align: center;
+    }
+
+    .cart-total {
+      text-align: right;
+      margin-top: 20px;
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
+
+    .cart-actions {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    .cart-actions button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .clear-btn {
+      background: #e74c3c;
+      color: white;
+    }
+
+    .checkout-btn {
+      background: #2ecc71;
+      color: white;
+    }
+
+    .clear-btn:hover { background: #c0392b; }
+    .checkout-btn:hover { background: #27ae60; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Your Shopping Cart 🛍️</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="stores.html">Stores</a>
+      <a href="checkout.html">Checkout</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="cart-container">
+      <div id="cartItems"></div>
+      <p class="cart-total">Total: $<span id="totalPrice">0.00</span></p>
+
+      <div class="cart-actions">
+        <button class="clear-btn" onclick="clearCart()">🗑 Clear Cart</button>
+        <button class="checkout-btn" onclick="goToCheckout()">💳 Proceed to Checkout</button>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    function renderCart() {
+      const cartContainer = document.getElementById("cartItems");
+      const totalPriceEl = document.getElementById("totalPrice");
+
+      cartContainer.innerHTML = "";
+      let total = 0;
+
+      if (cart.length === 0) {
+        cartContainer.innerHTML = "<p style='text-align:center;'>Your cart is empty 🛒</p>";
+        totalPriceEl.textContent = "0.00";
+        return;
+      }
+
+      cart.forEach((item, index) => {
+        if (!item.quantity) item.quantity = 1;
+
+        const subtotal = item.price * item.quantity;
+        total += subtotal;
+
+        const cartItem = document.createElement("div");
+        cartItem.className = "cart-item";
+        cartItem.innerHTML = `
+          <img src="${item.image}" alt="${item.name}">
+          <h4>${item.name}</h4>
+          <div class="qty-controls">
+            <button onclick="changeQty(${index}, -1)">−</button>
+            <span>${item.quantity}</span>
+            <button onclick="changeQty(${index}, 1)">+</button>
+          </div>
+          <p>$${subtotal.toFixed(2)}</p>
+          <button onclick="removeItem(${index})">Remove</button>
+        `;
+        cartContainer.appendChild(cartItem);
+      });
+
+      totalPriceEl.textContent = total.toFixed(2);
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
+
+    function changeQty(index, delta) {
+      if (cart[index].quantity + delta <= 0) return;
+      cart[index].quantity += delta;
+      renderCart();
+    }
+
+    function removeItem(index) {
+      cart.splice(index, 1);
+      renderCart();
+    }
+
+    function clearCart() {
+      if (confirm("Are you sure you want to clear your cart?")) {
+        cart = [];
+        renderCart();
+      }
+    }
+
+    function goToCheckout() {
+      if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+      }
+      window.location.href = "checkout.html";
+    }
+
+    renderCart();
+  </script>
+</body>
+</html>
+

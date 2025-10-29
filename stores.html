@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stores – City Center Mall</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background-color: #f9f8f6;
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: linear-gradient(90deg, #1e1e1e, #2a2a2a);
+      color: white;
+      padding: 1.5rem 2rem;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      margin-top: 1rem;
+    }
+
+    nav a {
+      color: #f0f0f0;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: #ffd700;
+    }
+
+    main {
+      padding: 2.5rem 1rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2rem;
+      color: #222;
+      font-weight: 600;
+    }
+
+    #welcomeUser {
+      text-align: center;
+      color: #555;
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+
+    .store-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.8rem;
+    }
+
+    .store-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .store-card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .store-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .store-card h3 {
+      margin: 1rem 0 0.5rem;
+      color: #222;
+      font-size: 1.3rem;
+    }
+
+    .store-card p {
+      color: #666;
+      font-size: 0.95rem;
+      margin-bottom: 1.2rem;
+      padding: 0 10px;
+    }
+
+    .store-card a {
+      display: inline-block;
+      background: #222;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .store-card a:hover {
+      background: #ffd700;
+      color: #000;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.2rem;
+      background: #111;
+      color: #ccc;
+      font-size: 0.9rem;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Our Stores</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="stores.html" class="active">Stores</a>
+      <a href="cart.html">Cart 🛒</a>
+      <a href="checkout.html">Checkout</a>
+      <a href="about.html">About</a>
+      <a href="login.html">Login</a>
+      <a href="signup.html">Sign Up</a>
+    </nav>
+  </header>
+
+  <main>
+    <p id="welcomeUser"></p>
+    <h2>Explore Our Mall Stores</h2>
+
+    <div class="store-grid">
+      <div class="store-card">
+        <img src="images/fashion.jpg" alt="Fashion Hub">
+        <h3>Fashion Hub</h3>
+        <p>Trendy outfits and accessories for every personality.</p>
+        <a href="store.html?store=fashion-hub">Visit Store</a>
+      </div>
+
+      <div class="store-card">
+        <img src="images/tech.jpg" alt="Tech World">
+        <h3>Tech World</h3>
+        <p>Innovative gadgets and the latest electronics you’ll love.</p>
+        <a href="store.html?store=tech-world">Visit Store</a>
+      </div>
+
+      <div class="store-card">
+        <img src="images/beauty.jpg" alt="Glow Beauty">
+        <h3>Glow Beauty</h3>
+        <p>Premium cosmetics and skincare for your perfect glow.</p>
+        <a href="store.html?store=glow-beauty">Visit Store</a>
+      </div>
+
+      <div class="store-card">
+        <img src="images/market.png" alt="Fresh Market">
+        <h3>Fresh Market</h3>
+        <p>Farm-to-table produce and groceries you can trust.</p>
+        <a href="store.html?store=fresh-market">Visit Store</a>
+      </div>
+
+      <div class="store-card">
+        <img src="images/home.jpg" alt="Home Comfort">
+        <h3>Home Comfort</h3>
+        <p>Stylish furniture and decor that make every room shine.</p>
+        <a href="store.html?store=home-comfort">Visit Store</a>
+      </div>
+
+      <div class="store-card">
+        <img src="images/books.jpg" alt="Book Haven">
+        <h3>Book Haven</h3>
+        <p>Discover your next great read and explore new worlds.</p>
+        <a href="store.html?store=book-haven">Visit Store</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 City Center Mall. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const user = JSON.parse(localStorage.getItem("user"));
+    const welcome = document.getElementById("welcomeUser");
+    if (user && user.name) {
+      welcome.textContent = `Welcome back, ${user.name}! 🎉`;
+    }
+  </script>
+</body>
+</html>

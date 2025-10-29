@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - Elegant Mall</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Elegant Mall</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="stores.html">Stores</a>
+      <a href="cart.html">Cart 🛒</a>
+      <a href="checkout.html">Checkout</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="active">Contact</a>
+      <a href="login.html">Login</a>
+      <a href="signup.html">Sign Up</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Contact Us</h2>
+    <p style="text-align:center; margin-bottom: 1.5rem;">We'd love to hear from you! Reach out via email or call us directly.</p>
+
+    <div class="contact-info">
+      <p>Email: <a href="mailto:info@citycentermall.com">info@citycentermall.com</a></p>
+      <p>Phone: <a href="tel:+12762526805">+1 (276) 252-6805</a></p>
+      <p>Address: 123 Elegant Street, City Center, USA</p>
+    </div>
+
+    <form id="contactForm">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" required>
+
+      <label for="message">Message</label>
+      <textarea id="message" rows="5" required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+
+    <p id="contactSuccess" style="text-align:center; color: green; margin-top: 1rem;"></p>
+  </main>
+
+  <footer>
+    <p>© 2025 Elegant Mall. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const contactForm = document.getElementById('contactForm');
+    const successMsg = document.getElementById('contactSuccess');
+
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      // Just show a success message (no backend)
+      successMsg.textContent = "Thank you! Your message has been sent.";
+      contactForm.reset();
+    });
+  </script>
+</body>
+</html>

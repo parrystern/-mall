@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us – City Center Mall</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    .about-container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 40px;
+      background: rgba(255, 255, 255, 0.97);
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      line-height: 1.8;
+      text-align: center;
+    }
+
+    .about-container h2 {
+      color: #333;
+      margin-bottom: 15px;
+      font-size: 2rem;
+    }
+
+    .about-container p {
+      color: #555;
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+
+    .highlights {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .highlight {
+      background: #fafafa;
+      border-radius: 10px;
+      padding: 20px;
+      width: 280px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .highlight:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .highlight h3 {
+      margin-bottom: 10px;
+      color: #222;
+    }
+
+    .highlight p {
+      font-size: 0.95rem;
+      color: #666;
+    }
+
+    .team-section {
+      margin-top: 50px;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 25px;
+      margin-top: 20px;
+    }
+
+    .team-member {
+      background: #f9f9f9;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .team-member:hover {
+      transform: translateY(-5px);
+    }
+
+    .team-member img {
+      width: 100%;
+      border-radius: 8px;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .team-member h4 {
+      margin: 10px 0 5px;
+      color: #333;
+    }
+
+    .team-member p {
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    .mission {
+      background: linear-gradient(135deg, #f3f3f3, #e8e8e8);
+      padding: 30px;
+      margin-top: 40px;
+      border-radius: 10px;
+      text-align: left;
+    }
+
+    .mission h3 {
+      color: #222;
+      margin-bottom: 15px;
+    }
+
+    .mission p {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #333;
+      color: white;
+      margin-top: 40px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>About City Center Mall</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="stores.html">Stores</a>
+      <a href="cart.html">Cart 🛒</a>
+      <a href="checkout.html">Checkout</a>
+      <a href="about.html" class="active">About</a>
+      <a href="login.html">Login</a>
+      <a href="signup.html">Sign Up</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="about-container">
+      <h2>Welcome to City Center Mall</h2>
+      <p>
+        Welcome to <strong>City Center Mall</strong> — the ultimate online shopping destination where style,
+        innovation, and convenience meet. Whether you’re upgrading your wardrobe, enhancing your tech setup,
+        or restocking your pantry, we bring together your favorite brands and stores under one digital roof.
+      </p>
+      <p>
+        Since our launch in 2025, we’ve been redefining what it means to shop online — creating a space that’s
+        both exciting and effortless. From top fashion outlets to trusted electronics and home essentials,
+        we curate products designed to fit every lifestyle.
+      </p>
+
+      <div class="highlights">
+        <div class="highlight">
+          <h3>🛍️ 50+ Stores</h3>
+          <p>Browse through over 50 verified local and international brands — all accessible in one convenient hub.</p>
+        </div>
+
+        <div class="highlight">
+          <h3>🚀 Fast Checkout</h3>
+          <p>Enjoy a secure and smooth checkout experience powered by the latest web technologies.</p>
+        </div>
+
+        <div class="highlight">
+          <h3>💬 Customer Support</h3>
+          <p>Our support team is available 24/7 to assist with any questions, returns, or order tracking.</p>
+        </div>
+
+        <div class="highlight">
+          <h3>🌍 Sustainable Shopping</h3>
+          <p>We partner with eco-conscious brands to promote sustainability and responsible shopping.</p>
+        </div>
+
+        <div class="highlight">
+          <h3>🎁 Exclusive Deals</h3>
+          <p>Get early access to limited offers, new arrivals, and exclusive online-only discounts.</p>
+        </div>
+      </div>
+
+      <div class="mission">
+        <h3>Our Mission</h3>
+        <p>
+          At City Center Mall, our mission is to connect shoppers with quality and affordability.
+          We believe that online shopping should feel as personal as walking into your favorite store.
+        </p>
+        <p>
+          We work closely with vendors to ensure transparency, reliability, and satisfaction — every step of the way.
+          Our platform continues to evolve with your needs, powered by technology and inspired by community.
+        </p>
+      </div>
+
+      <section class="team-section">
+        <h2>Meet Our Team</h2>
+        <div class="team-grid">
+          <div class="team-member">
+            <h4>Batuta Parry</h4>
+            <p>Founder & CEO</p>
+          </div>
+          <div class="team-member">
+            <h4>Kweku Arhin</h4>
+            <p>Operations Manager</p>
+          </div>
+          <div class="team-member">
+          <h4>Jordan Lee</h4>
+            <p>Lead Developer</p>
+          </div>
+          <div class="team-member">
+            <h4>Sophia Brown</h4>
+            <p>Marketing Director</p>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 City Center Mall. All rights reserved.</p>
+    <p>Empowering your shopping experience — one click at a time.</p>
+  </footer>
+</body>
+</html>

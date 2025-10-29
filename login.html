@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - City Center Mall</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Login</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="stores.html">Stores</a>
+      <a href="cart.html">Cart 🛒</a>
+      <a href="checkout.html">Checkout</a>
+      <a href="about.html">About</a>
+      <a href="login.html">Login</a>
+      <a href="signup.html">Sign Up</a>
+    </nav>
+  </header>
+  <main>
+  <div class="form-container">
+    <form onsubmit="handleLogin(event)">
+      <label for="email">Email</label><br>
+      <input type="email" id="email" required><br><br>
+
+      <label for="password">Password</label><br>
+      <input type="password" id="password" required><br><br>
+
+      <button type="submit">Login</button>
+    </form>
+  </div>
+</main>
+<script>
+function handleLogin(event) {
+  event.preventDefault();
+
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  const savedUser = JSON.parse(localStorage.getItem("user"));
+
+  if (!savedUser) {
+    alert("No user found. Please sign up first.");
+    return;
+  }
+
+  if (email === savedUser.email && password === savedUser.password) {
+    // ✅ Save logged-in user again to ensure they’re recognized
+    localStorage.setItem("user", JSON.stringify(savedUser));
+
+    alert("Login successful!");
+    window.location.href = "index.html"; // Redirect to homepage
+  } else {
+    alert("Invalid email or password.");
+  }
+}
+</script>
+
+</body>
+</html>

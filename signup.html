@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up – City Center Mall</title>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .form-container {
+      background: rgba(255, 255, 255, 0.95);
+      max-width: 400px;
+      margin: 40px auto;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .form-container input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .form-container button {
+      width: 100%;
+      padding: 10px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+    .form-container button:hover {
+      background-color: #555;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Create an Account</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="stores.html">Stores</a>
+      <a href="cart.html">Cart 🛒</a>
+      <a href="checkout.html">Checkout</a>
+      <a href="about.html">About</a>
+      <a href="login.html">Login</a>
+      <a href="signup.html" class="active">Sign Up</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="form-container">
+      <h2>Join City Center Mall</h2>
+      <p>Create your free account to start shopping.</p>
+
+      <form onsubmit="handleSignUp(event)">
+        <label for="fullname">Full Name</label><br>
+        <input type="text" id="fullname" placeholder="Enter your full name" required><br>
+
+        <label for="email">Email</label><br>
+        <input type="email" id="email" placeholder="Enter your email" required><br>
+
+        <label for="password">Password</label><br>
+        <input type="password" id="password" placeholder="Enter a password" required><br>
+
+        <label for="confirm">Confirm Password</label><br>
+        <input type="password" id="confirm" placeholder="Re-enter your password" required><br>
+
+        <button type="submit">Sign Up</button>
+      </form>
+
+      <p style="margin-top: 15px;">
+        Already have an account?
+        <a href="login.html" style="color:#007BFF;">Login</a>
+      </p>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 City Center Mall. All rights reserved.</p>
+  </footer>
+
+  <!-- ✅ Signup Script -->
+  <script>
+    function handleSignUp(event) {
+      event.preventDefault();
+
+      const name = document.getElementById("fullname").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const confirm = document.getElementById("confirm").value.trim();
+
+      if (password !== confirm) {
+        alert("Passwords do not match!");
+        return;
+      }
+
+      const user = { name, email, password };
+
+      // ✅ Save user to localStorage
+      localStorage.setItem("user", JSON.stringify(user));
+
+      alert("Account created successfully!");
+      window.location.href = "login.html"; // Redirect to login
+    }
+  </script>
+</body>
+</html>
+        
